@@ -33,7 +33,7 @@ app.post('/user/create',async function (req,res){
         console.log(email,firstname,lastname,policyno,mobileno,identino);
        let Existeduser=await userModel.findOne({$or:[{ email }, { mobileNumber: mobileno }]})
         if (Existeduser) {
-            res.status(203).json({msg:"Email or Mobile number already registered"})
+           return res.status(203).json({msg:"Email or Mobile number already registered"})
         }
         const user =await userModel.create({
                 firstname,lastname,
