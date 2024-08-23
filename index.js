@@ -29,8 +29,8 @@ let transporter = nodemailer.createTransport({
 
 app.post('/user/create',async function (req,res){
     try {
-        let{email,firstname,lastname,policyno,mobileno,identino}=req.body
-        console.log(email,firstname,lastname,policyno,mobileno,identino);
+        let{email,firstname,lastname,policyno,mobileno,identino,diseases}=req.body
+        console.log(email,firstname,lastname,policyno,mobileno,identino,diseases);
        let Existeduser=await userModel.findOne({$or:[{ email }, { mobileNumber: mobileno }]})
         if (Existeduser) {
            return res.status(203).json({msg:"Email or Mobile number already registered"})
@@ -40,7 +40,9 @@ app.post('/user/create',async function (req,res){
                 mobileNumber:mobileno,
                 email,
                 IdentificationNumber:identino,
-                PolicyNumber:policyno
+                PolicyNumber:policyno,
+                disease:diseases
+
 
         })
         if (user) {

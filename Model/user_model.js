@@ -25,7 +25,9 @@ const userSchema=mongoose.Schema({
             type:Number,
             required:true
         },
-
+        diseases:[{
+            type:String
+        }]
 })
 const userModel=mongoose.model('user',userSchema)
 module.exports={userModel}
