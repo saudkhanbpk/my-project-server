@@ -5,7 +5,7 @@ const { userModel } = require('./Model/user_model');
 const dotenv = require('dotenv').config();
 const app=express()
 const nodemailer = require('nodemailer');
-// const sgMail = require('@sendgrid/mail');
+
 const port=process.env.PORT || 5000
 app.use(cors())
 app.use(express.json())
@@ -41,7 +41,7 @@ app.post('/user/create',async function (req,res){
                 email,
                 IdentificationNumber:identino,
                 PolicyNumber:policyno,
-                disease:diseases
+                diseases:diseases,
 
 
         })
